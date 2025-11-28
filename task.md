@@ -16,6 +16,9 @@
 - [x] Create logo with transparent background <!-- id: 13 -->
 - [x] Maximize logo symbol size within image <!-- id: 14 -->
 - [x] Add slogan to page header <!-- id: 15 -->
+- [x] Update contact form to match day-one-cloud-preview-v1 <!-- id: 16 -->
+- [x] Implement AJAX form submission with inline success message <!-- id: 17 -->
+- [ ] Deploy changes to Netlify <!-- id: 18 -->
 
 
 
