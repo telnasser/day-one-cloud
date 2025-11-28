@@ -18,7 +18,8 @@
 - [x] Add slogan to page header <!-- id: 15 -->
 - [x] Update contact form to match day-one-cloud-preview-v1 <!-- id: 16 -->
 - [x] Implement AJAX form submission with inline success message <!-- id: 17 -->
-- [ ] Deploy changes to Netlify <!-- id: 18 -->
+- [x] Deploy changes to Netlify <!-- id: 18 -->
+- [x] Remove "Thank You!" and align success message design <!-- id: 19 -->
 
 
 
