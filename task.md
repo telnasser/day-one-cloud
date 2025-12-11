@@ -20,6 +20,7 @@
 - [x] Implement AJAX form submission with inline success message <!-- id: 17 -->
 - [x] Deploy changes to Netlify <!-- id: 18 -->
 - [x] Remove "Thank You!" and align success message design <!-- id: 19 -->
+- [ ] Troubleshoot dayonecloud.ai domain access <!-- id: 20 -->
 
 
 

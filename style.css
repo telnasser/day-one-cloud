@@ -112,6 +112,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: var(--header-height);
+    position: relative;
 }
 
 .logo {
@@ -120,6 +121,8 @@ header {
     gap: 24px;
     font-weight: 700;
     font-size: 2.5rem;
+    z-index: 1001;
+    /* Ensure logo is above mobile menu if needed, or keep same level */
 }
 
 .logo-img {
@@ -143,6 +146,25 @@ header {
 
 .nav-links a:not(.btn):hover {
     color: var(--primary-accent);
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    z-index: 1002;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
 }
 
 /* Hero Section */
@@ -249,6 +271,8 @@ header {
     margin-bottom: 4rem;
     font-size: 3rem;
     font-weight: 700;
+    padding: 0 10px;
+    /* Ensure title doesn't touch edges on mobile */
 }
 
 .services-grid {
@@ -390,6 +414,7 @@ header {
 .contact-subtitle {
     color: var(--muted-color);
     margin-bottom: 2rem;
+    padding: 0 10px;
 }
 
 .contact-form {
@@ -432,21 +457,159 @@ footer {
     font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
+/* Animations */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Designs */
+@media (max-width: 1024px) {
     .hero-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
+    }
+
+    .logo {
+        gap: 16px;
+        font-size: 2rem;
+        /* Scale down outer font size */
+    }
+
+    .logo-img {
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 90px;
+        /* Slightly more compact */
+    }
+
+    .hamburger-menu {
+        display: flex;
     }
 
     .nav-links {
-        display: none;
-        /* Mobile menu to be implemented if needed */
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        background-color: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 1000;
+        gap: 30px;
+        padding-top: var(--header-height);
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    /* Hamburger Animation when Active */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        padding: 0 15px;
     }
 
     .about-container {
         grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-image {
+        order: -1;
     }
 
     .section-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .logo {
+        gap: 10px;
+        font-size: 1.5rem;
+        /* Further reduce for tablet/mobile */
+    }
+
+    .logo-img {
+        height: 60px;
+        /* Smaller logo image */
+    }
+
+    /* Show slogan if possible, but stack or hide on very small. 
+       Let's keep it visible but smaller on tablet, maybe hide on phone if crowded */
+    .header-slogan {
+        font-size: 0.9rem;
+        display: block;
+        /* Ensure it's visible on tablet if it fits */
+        margin-left: 8px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        padding: 0 40px;
+    }
+
+    .contact-box {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        /* font-size inherited from .logo usually, but we can set explicit if needed */
+        font-size: 1.25rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .logo-img {
+        height: 50px;
+    }
+
+    .header-slogan {
+        display: none;
+        /* Hide on very small screens to preserve space */
+    }
+
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
     }
 }
