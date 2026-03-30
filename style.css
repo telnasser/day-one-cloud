@@ -15,8 +15,8 @@
     /* Spacing */
     /* Spacing */
     --container-width: 1200px;
-    --header-height: clamp(110px, 12vh, 160px);
-    /* Increased for larger logo */
+    --header-height: clamp(160px, 18vh, 230px);
+    /* Significantly increased to fit massive logo prominently */
     --section-padding: clamp(60px, 8vw, 100px);
 }
 
@@ -163,8 +163,8 @@ header {
 
 .logo-img {
     height: auto;
-    max-height: 85%;
-    /* Maximized prominence within header */
+    max-height: 96%;
+    /* Keep it slightly padded within the newly enlarged header */
     width: auto;
 }
 
