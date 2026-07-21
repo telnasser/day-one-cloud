@@ -231,7 +231,7 @@ header {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: 32px;
 }
 
 .nav-links a:not(.btn) {
@@ -241,6 +241,39 @@ header {
 
 .nav-links a:not(.btn):hover {
     color: var(--primary-accent);
+}
+
+/* Language Switcher UI */
+.lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    padding: 3px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+    margin-left: 8px;
+}
+
+.lang-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: var(--muted-color);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.lang-btn.active {
+    background: linear-gradient(135deg, var(--primary-accent), #0891b2);
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(6, 182, 212, 0.4);
+}
+
+.lang-btn:hover:not(.active) {
+    color: var(--text-color);
 }
 
 /* Hamburger Menu */
@@ -425,7 +458,7 @@ header {
     background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15), transparent);
 }
 
-/* Impact Metrics Section (NEW) */
+/* Impact Metrics Section */
 .metrics-section {
     padding-top: 40px;
 }
@@ -525,7 +558,7 @@ header {
     line-height: 1.65;
 }
 
-/* Methodology / Process Section (NEW) */
+/* Methodology / Process Section */
 .process-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -598,7 +631,7 @@ header {
     100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
 }
 
-/* FAQ Section (NEW) */
+/* FAQ Section */
 .faq-accordion-container {
     max-width: 800px;
     margin: 0 auto;
@@ -747,7 +780,6 @@ footer {
     font-size: 1.6rem;
     font-weight: 800;
     color: var(--text-color);
-
 }
 
 .footer-desc {
@@ -833,12 +865,17 @@ footer {
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1000;
-        gap: 32px;
+        gap: 28px;
         padding-top: var(--header-height);
     }
 
     .nav-links.active {
         transform: translateX(0);
+    }
+
+    .lang-switcher {
+        margin-left: 0;
+        margin-top: 8px;
     }
 
     .hamburger-menu.active .bar:nth-child(1) {
