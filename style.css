@@ -16,7 +16,7 @@
 
     /* Spacing & Sizes */
     --container-width: 1200px;
-    --header-height: clamp(80px, 12vh, 120px);
+    --header-height: clamp(90px, 12vh, 130px);
     --section-padding: clamp(60px, 8vw, 100px);
 }
 
@@ -219,13 +219,20 @@ header {
 .logo {
     display: flex;
     align-items: center;
+    height: 100%;
     z-index: 1001;
 }
 
 .logo-img {
-    height: clamp(50px, 7vh, 75px);
+    height: clamp(68px, 9.5vh, 108px);
+    max-height: calc(var(--header-height) - 14px);
     width: auto;
     object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.02);
 }
 
 .nav-links {
@@ -843,7 +850,12 @@ footer {
 
 @media (max-width: 768px) {
     :root {
-        --header-height: 80px;
+        --header-height: 85px;
+    }
+
+    .logo-img {
+        height: clamp(55px, 8vh, 75px);
+        max-height: calc(var(--header-height) - 10px);
     }
 
     .hamburger-menu {
