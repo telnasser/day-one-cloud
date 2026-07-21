@@ -4,25 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You | Day One Cloud</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Message Received | Day One Cloud</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://dayonecloud.com/success.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=9">
     <style>
-        .success-container {
+        .success-page-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 60vh;
+            min-height: 70vh;
             text-align: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
 
-        .success-icon {
-            width: 64px;
-            height: 64px;
-            color: #06b6d4;
-            margin-bottom: 1.5rem;
+        .success-page-icon {
+            width: 80px;
+            height: 80px;
+            color: var(--primary-accent);
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 15px var(--primary-glow));
         }
     </style>
 </head>
@@ -31,27 +37,28 @@
     <header id="header">
         <div class="container header-container">
             <a href="/" class="logo">
-                <span class="logo-text">Day One Cloud</span>
+                <img src="day_one_cloud_logo_matched_1763677699606.png" alt="Day One Cloud Logo" class="logo-img" width="280" height="90">
             </a>
         </div>
     </header>
 
-    <section class="success-container">
-        <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+    <main class="success-page-container">
+        <svg class="success-page-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <h1 class="hero-title">Message Sent!</h1>
-        <p class="hero-subtitle">Thank you for reaching out. We'll get back to you shortly.</p>
+        <h1 class="hero-title">Message Received!</h1>
+        <p class="hero-subtitle">Thank you for reaching out to Day One Cloud. Our AI and cloud solutions team will get back to you shortly.</p>
         <a href="/" class="btn btn-primary" style="margin-top: 2rem;">Back to Home</a>
-    </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Day One Cloud. All rights reserved.</p>
+            <p>&copy; <span id="currentYear">2026</span> Day One Cloud. All rights reserved.</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>

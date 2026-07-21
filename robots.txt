@@ -1,0 +1,5 @@
+# Day One Cloud Robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://dayonecloud.com/sitemap.xml

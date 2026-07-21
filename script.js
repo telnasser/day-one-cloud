@@ -1,17 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for anchor links with header offset
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const headerOffset = 90;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
     // Intersection Observer for scroll animations
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -26,6 +38,38 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    // Metric Number Counter Animation
+    const metricObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const numberEl = entry.target.querySelector('.metric-number');
+                if (numberEl && numberEl.dataset.target) {
+                    animateValue(numberEl, 0, parseFloat(numberEl.dataset.target), 1500);
+                }
+                metricObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.metric-card').forEach(card => {
+        metricObserver.observe(card);
+    });
+
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const currentVal = Math.floor(progress * (end - start) + start);
+            const suffix = obj.textContent.replace(/[0-9.]/g, '');
+            obj.textContent = currentVal + suffix;
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
     // AJAX Form Submission
     const contactForm = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
@@ -34,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-
             const formData = new FormData(contactForm);
 
             fetch('/', {
@@ -60,14 +103,25 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
         });
     }
-    // Mobile Menu Toggle
+
+    // Mobile Menu Toggle & Keyboard Accessibility
     const hamburger = document.getElementById('hamburgerMenu');
     const navLinks = document.querySelector('.nav-links');
 
+    const toggleMenu = () => {
+        const isOpen = hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        hamburger.addEventListener('click', toggleMenu);
+
+        hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
         });
 
         // Close menu when clicking a link
@@ -75,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
     }

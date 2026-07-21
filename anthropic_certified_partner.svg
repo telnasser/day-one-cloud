@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 120" fill="none">
+  <!-- Official Anthropic Logo -->
+  <g transform="translate(30, 35) scale(2.2)">
+    <path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z" fill="#f8fafc"/>
+  </g>
+  
+  <!-- Text -->
+  <g fill="#f8fafc">
+    <text x="110" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">Anthropic</text>
+    <text x="110" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#D4A574" letter-spacing="1.5">CERTIFIED PARTNER</text>
+  </g>
+</svg>

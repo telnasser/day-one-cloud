@@ -1,0 +1,15 @@
+{
+  "name": "Day One Cloud | Enterprise AI & Cloud Innovation",
+  "short_name": "Day One Cloud",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a"
+}
